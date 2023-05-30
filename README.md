@@ -4,4 +4,7 @@ BorrowIt is website project to rent objects from person to person. It is coded w
 
 The aim of this project is to recode the frontend and the backend using Django, a framework used for developing websites in python.
 
+# Requirements
 
+This application use Django with the verison 4.2. 
+To install Django : https://docs.djangoproject.com/fr/4.0/topics/install/
