@@ -1,0 +1,22 @@
+
+#emprunts-navbar {
+    text-decoration: underline;
+}
+
+img {
+    max-width: fit-content;
+    max-height: 190px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+.img-objet {
+    height: 200px;
+    padding-top: 5px;
+}
+
+.btn {
+    min-width: 200px;
+    width: 250px;
+}

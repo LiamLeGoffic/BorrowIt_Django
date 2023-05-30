@@ -1,0 +1,235 @@
+{% extends 'articles/base.html' %}
+
+{% block extra_css %}
+
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'articles/abonnements_styles.css' %}" />
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+    integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+
+<section class="section" id="pricing">
+    <div class="container">
+
+        <div class="row mt-3 pt-4">
+            <div class="col-lg-4 shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="pricing-box mt-4">
+                    <i class="mdi mdi-account h1"></i>
+                    <h4 class="f-20">Standard</h4>
+
+                    <div class="pricing-plan mt-4 pt-2 text-center">
+                        <h4 class="text-muted"> <span class="plan text-dark">Gratuit </span></h4>
+                        <br>
+                    </div>
+
+                    <div class="mt-2 pt-3 d-flex flex-column text-center">
+                        <a href="" class="btn btn-rounded disabled"
+                            style="color: white; background-color: rgb(37, 37, 37)">Actuel</a>
+                    </div>
+
+                    <div class="mt-4 pt-2">
+                        <p class="mb-2 f-18"><b>Avantages</b></p>
+                        <p class="mb-2"><i class="mdi mdi-close-circle text-danger f-18 mr-2"></i><b>Profil</b> certifié</p>
+                        <p class="mb-2"><i class="mdi mdi-close-circle text-danger f-18 mr-2"></i><b>Sans limite</b> d'objets en ligne</p>
+                        <p class="mb-2"><i class="mdi mdi-close-circle text-danger f-18 mr-2"></i><b>Sans limite</b> de locations</p>
+                        <p class="mb-2"><i class="mdi mdi-close-circle text-danger f-18 mr-2"></i><b>Priorité</b> sur les commandes</p>
+                    </div>
+                    <p class="mt-4 pt-2 text-muted">Limite de 10 locations simultanées et 10 emprunts simultanés</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="pricing-box mt-4">
+                    <div class="pricing-badge">
+                        <span class="badge">Recommandé</span>
+                    </div>
+
+                    <i class="mdi mdi-account-multiple h1"></i>
+                    <h4 class="f-20 "> Premium Mensuel</h4>
+
+                    <div class="pricing-plan mt-4 pt-2 text-center">
+                        <h4 class="text-muted"> <span class="plan text-dark">4,99 € </span></h4>
+                        <p class="text-muted mb-0">Par mois</p>
+                    </div>
+
+                    <div class="mt-2 pt-3 d-flex flex-column text-center">
+                        <a class="btn btn-rounded" data-toggle="modal" data-target="#modalMensuel"
+                            style="background-color: rgb(37, 37, 37);">Acheter</a>
+                    </div>
+
+                    <div class="mt-4 pt-2">
+                        <p class="mb-2 f-18"><b>Avantages</b> </p>
+                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Profil</b> certifié</p>
+                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Sans limite</b> d'objets en ligne</p>
+                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Sans limite</b> de locations</p>
+                        <p class="mb-2"><i class="mdi mdi-close-circle text-danger f-18 mr-2"></i><b>Priorité</b> sur les commandes</p>
+                    </div>
+                    <p class="mt-4 pt-2 text-muted">Abonnement mensuel, sans aucune limitation.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="pricing-box mt-4">
+                    <i class="mdi mdi-account-multiple-plus h1"></i>
+                    <h4 class="f-20">Premium Annuel</h4>
+
+                    <div class="pricing-plan mt-4 pt-2 text-center">
+                        <h4 class="text-muted">
+                            <span style="text-decoration: line-through;">59,88 €</span>
+                            <span class="plan text-dark"> 49,99 €</span>
+                        </h4>
+                        <p class="text-muted mb-0">Par an</p>
+                    </div>
+
+                    <div class="mt-2 pt-3 d-flex flex-column text-center">
+                        <a class="btn  btn-rounded" data-toggle="modal" data-target="#modalAnnuel"
+                            style="background-color: rgb(37, 37, 37)">Acheter</a>
+                    </div>
+
+                    <div class="mt-4 pt-2">
+                        <p class="mb-2 f-18"><b>Avantages</b></p>
+                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Profil</b> certifié</p>
+                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Sans limite</b> d'objets en ligne</p>
+                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Sans limite</b> de locations</p>
+                        <p class="mb-2"><i class="mdi mdi-checkbox-marked-circle text-success f-18 mr-2"></i><b>Priorité</b> sur les commandes</p>
+                    </div>
+
+                    <p class="mt-4 pt-2 text-muted">Abonnement annuel avec 2 mois gratuits, sans aucune limitation.
+                    </p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="modalMensuel" role="dialog" tabindex="-1" aria-labelledby="BackdropLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="tabs mt-3">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab"
+                                data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true">
+                                <img src="https://i.imgur.com/sB4jftM.png" width="80"> </a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab"
+                                href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img
+                                    src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                            <div class="mt-4 mx-4">
+                                <div class="text-center">
+                                    <h5>Abonnement Mensuel</h5>
+                                </div>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="form mt-3">
+                                        <div class="inputbox"> <input type="text" name="nom"
+                                                class="form-control" required> <span>Nom du titulaire</span>
+                                        </div>
+                                        <div class="inputbox">
+                                            <input type="text" class="form-control" required>
+                                            <span>Numéro de la carte</span> <i class="fa fa-eye"></i> </div>
+                                        <div class="d-flex flex-row">
+                                            <div class="inputbox"> <input type="text" class="form-control" required pattern="[0-9]{2}/[0-9]{2}">
+                                                <span>Date d'expiration</span>
+                                            </div>
+                                            <div class="inputbox"> <input type="text" class="form-control" required pattern="[0-9]{3}">
+                                                <span>CVV</span>
+                                            </div>
+                                        </div>
+                                        <div class="px-5 pay"> <button class="btn btn-success btn-block">Payer 4,99 €</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                            <div class="px-5 mt-5">
+                                <div class="inputbox"> <input type="text" name="name" class="form-control"
+                                        required="required"> <span>Paypal Email Address</span> </div>
+                                <div class="pay px-5"> <button class="btn btn-primary btn-block">Add paypal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAnnuel" role="dialog" tabindex="-1" aria-labelledby="BackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="tabs mt-3">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab"
+                                data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true">
+                                <img src="https://i.imgur.com/sB4jftM.png" width="80"> </a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab"
+                                href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img
+                                    src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                            <div class="mt-4 mx-4">
+                                <div class="text-center">
+                                    <h5>Abonnement Annuel</h5>
+                                </div>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="form mt-3">
+                                        <div class="inputbox"> <input type="text" name="nom"
+                                                class="form-control" required> <span>Nom du titulaire</span>
+                                        </div>
+                                        <div class="inputbox">
+                                            <input type="text" class="form-control" required>
+                                            <span>Numéro de la carte</span> <i class="fa fa-eye"></i> </div>
+                                        <div class="d-flex flex-row">
+                                            <div class="inputbox"> <input type="text" class="form-control" required pattern="[0-9]{2}/[0-9]{2}">
+                                                <span>Date d'expiration</span>
+                                            </div>
+                                            <div class="inputbox"> <input type="text" class="form-control" required pattern="[0-9]{3}">
+                                                <span>CVV</span>
+                                            </div>
+                                        </div>
+                                        <div class="px-5 pay"> <button class="btn btn-success btn-block">Payer 49,99 €</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                            <div class="px-5 mt-5">
+                                <div class="inputbox"> <input type="text" name="name" class="form-control"
+                                        required="required"> <span>Paypal Email Address</span> </div>
+                                <div class="pay px-5"> <button class="btn btn-primary btn-block">Add paypal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

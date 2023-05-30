@@ -1,0 +1,73 @@
+{% extends 'articles/base.html' %}
+
+{% block content %}
+
+<div class="conteneur container-fluid justify-content-center">
+    <div class="row align-text-center" style="height: 900px;">
+        <div class="mx-auto col-10 col-md-8 col-lg-6 mt-3">
+            <form action="" method="post" style="padding-left: 30px; padding-right: 30px; box-shadow: 1px 1px 3px 3px rgba(255, 205, 205, 0.925);">
+                <div class="md-form mb-4" style="text-align: center; padding-top: 15px;">
+                    <p style="font-weight: bold; font-size: x-large;">Ajouter un nouvel objet</p>
+                </div>
+                {% csrf_token %}
+                <div class=" md-form mb-4">
+                    <p style="font-weight: bold;">Type d'objet :</p>
+                    <i class="fas prefix grey-text"></i>
+                    <select class="form-select form-select-lg mb-3 form-control validate"
+                        aria-label=".form-select-lg example" name="tag" required>
+                        <option value="O">Outil</option>
+                        <option value="F">Film</option>
+                        <option value="L">Livre</option>
+                        <option value="J">Jeu</option>
+                        <option value="IF">Informatique</option>
+                        <option value="V">Véhicule</option>
+                        <option value="MO">Mode</option>
+                        <option value="IM">Immobilier</option>
+                        <option value="MU">Musique</option>
+                        <option value="A">Autre</option>
+                    </select>
+                </div>
+                <div class="md-form mb-4">
+                    <p style="font-weight: bold;">Nom de l'objet :</p>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="nom" id="nom" placeholder="Exemple : Tournevis" required>
+                    </div>
+                </div>
+                <div class="md-form mb-4">
+                    <p style="font-weight: bold;">Entrer l'URL de la photo :</p>
+                    <div class="form-group">
+                        <input class="form-control" name="url_photo" required placeholder="Exemple : http://site/image.png" type="url">
+                    </div>
+                </div>
+                <div class="md-form mb-4">
+
+                    <p style="font-weight: bold;">Entrer le prix par jour (en €) :</p>
+                    <div class="form-group">
+                        <input id="prix-jour" class="form-control" name="prix_jour" required placeholder="XX.XX" type="text">
+                    </div>
+                </div>
+                <div class="md-form mb-4">
+                    <p style="font-weight: bold;">Entrer le prix de la caution (en €) :</p>
+                    <div class="form-group">
+                        <input class="form-control" id="prix-caution" name="caution" required placeholder="XX.XX" type="text">
+
+                    </div>
+                </div>
+
+                <div class="md-form mb-">
+                    <p style="font-weight: bold;">Description de l'objet :</p>
+                    <div class="form-floating">
+                        <textarea maxlength="500" class="form-control validate" id="floatingTextarea2" name="description" 
+                        style="height: 100px" placeholder="500 caractères max"></textarea>
+                    </div>
+                </div>
+                <div class="d-flex flex-column" style="text-align: center;">
+                    <input type="submit" class="creation btn btn-round custom-close mb-5" value="Créer l'objet"
+                        style="width:200px;color: white; background-color: rgb(211, 0, 0); border-radius: 30px;">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

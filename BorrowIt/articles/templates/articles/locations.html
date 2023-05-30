@@ -1,0 +1,108 @@
+{% extends 'articles/base.html' %}
+
+{% load templatetags %}
+
+{% block extra_css %}
+
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'articles/locations_styles.css' %}" />
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="ml-4 mr-4 mt-4 mb-5 log text-center">
+    <p style="font-weight: bold; font-size: x-large;">Liste des locations</p>
+    <div class="container justify-content-center">
+        <div class="container justify-content-center mb-4">
+
+            {% if location_list_to_show == 'attente_validation' %} 
+            <button type="button" class="btn btn-primary active" disabled>Demandes reçues</button>
+            {% else %}
+            <a href="{% url 'location-list-panel' id 'attente_validation' %}"><button type="button" class="btn btn-primary">Demandes reçues</button></a>
+            {% endif %}
+
+            {% if location_list_to_show == 'validees' %} 
+            <button type="button" class="btn btn-primary active" disabled>Demandes acceptées</button>
+            {% else %}
+            <a href="{% url 'location-list-panel' id 'validees' %}"><button type="button" class="btn btn-primary">Demandes acceptées</button></a>
+            {% endif %}
+
+            {% if location_list_to_show == 'en_cours' %} 
+            <button type="button" class="btn btn-primary active" disabled>Locations en cours</button>
+            {% else %}
+            <a href="{% url 'location-list-panel' id 'en_cours' %}"><button type="button" class="btn btn-primary">Locations en cours</button></a>
+            {% endif %}
+
+            {% if location_list_to_show == 'passees' %} 
+            <button type="button" class="btn btn-primary active" disabled>Historique des locations</button>
+            {% else %}
+            <a href="{% url 'location-list-panel' id 'passees' %}"><button type="button" class="btn btn-primary">Historique des locations</button></a>
+            {% endif %}
+
+        </div>
+
+        <div class="container">
+            {% for loc in locations %}
+            <div class="row" style="justify-content: center;">
+                <div class="card mb-4" style="background-color: rgb(226, 226, 226);">
+                    <div class="card col-sm-12"
+                        style="width: 50rem; box-shadow: 1px 1px 3px 3px rgba(255, 205, 205, 0.925);">
+                        <div class="row g-0">
+                            <div class="img-objet col-md-6">
+                                <img src="{{ loc.objet.url_photo }}" href={% url 'objet-connected' id loc.objet.id %} class="card-img-top" alt="...">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ loc.objet.nom }}</h5>
+                                    <p class="card-text">{{ loc.date_fin|difference_in_days:loc.date_debut }} jour(s) du {{ loc.date_debut|print_date }} au {{ loc.date_fin|print_date }}
+                                        <br>
+                                        total : {{ loc.date_fin|difference_in_days:loc.date_debut|mult:loc.objet.prix_jour }} €
+                                        <br>
+                                        caution : {{ loc.objet.caution }} €
+                                        <br>
+                                        {% if location_list_to_show == 'passees' and loc.date_fin_reelle > loc.date_fin %}
+                                        {{ loc.date_fin_reelle|difference_in_days:loc.date_fin }} jour(s) de retard (rendu le {{ loc.date_fin_reelle|print_date }})
+                                        {% endif %}
+                                    </p>
+
+                                    {% if location_list_to_show == 'attente_validation' or location_list_to_show == 'validees' %}
+                                    <a href="{% url 'delete-emprunt' id loc.id %}"><button type="button" class="btn btn-danger">Annuler</button></a>
+                                    {% endif %}
+
+                                    <a href="{% url 'profil-target-connected' id loc.objet.proprietaire.id %}">
+                                    <button type="button" class="btn btn-dark">Voir Propriétaire</button>
+                                    </a>
+                                    
+                                    {% if location_list_to_show == 'attente_validation' %}
+                                        <a href="{% url 'payer-loc' id loc.id %}"><button type="button" class="btn btn-primary btn-rounded">Valider</button></a>
+                                    {% endif %}
+
+                                    {% if location_list_to_show == 'validees' %}
+                                        <button type="button" class="btn btn-primary btn-rounded" disabled>
+                                            {% if loc.payee == True %}Payé
+                                            {% else %}Attente paiement
+                                            {% endif %}
+                                        </button>
+                                    {% endif %}
+
+                                    {% if location_list_to_show == 'en_cours' and loc.date_fin >= date.today %}
+                                    <a href="{% url 'terminer-loc' id loc.id %}"><button type="button" class="btn btn-info">Dater le retour</button></a>
+                                    {% endif %}
+
+                                    {% if location_list_to_show == 'passees' or location_list_to_show == 'en_cours' %}
+                                    <a href="{% url 'add-signalement' id loc.emprunteur.id %}"><button type="button" class="btn btn-info">Signalement</button></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

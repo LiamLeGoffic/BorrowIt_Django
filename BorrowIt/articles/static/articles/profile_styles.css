@@ -1,0 +1,88 @@
+
+.conteneur {
+
+    max-width: 400px;
+    min-width: 230px;
+    margin-bottom: 20px;
+}
+
+.card-img-top {
+    border: 1px solid rgb(175, 175, 175);
+    max-width: 400px;
+    object-fit: contain;
+    display: block;
+    height: 250px;
+    margin: auto;
+    object-fit: contain;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    margin-bottom: 5px;
+}
+
+.card-img-bot {
+    clip-path: circle();
+    width: 60px;
+    block-size: fit-content;
+    margin-left: 20px;
+
+    max-height: 70px;
+    max-width: fit-content;
+}
+
+.card-img-bot:hover {
+    box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.card-img-top:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.card-title {
+    font-size: large;
+    height: 10px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 5px;
+
+}
+
+
+.card-descrip {
+    font-size: 11px;
+    width: fit-content;
+    block-size: fit-content;
+    height: 40px;
+    margin-left: 10px;
+    margin-bottom: -20px;
+}
+
+.text-muted {
+
+    width: fit-content;
+    min-height: auto;
+    font-size: 13px;
+}
+
+.left-bottom-card {
+    float: left;
+    width: 50%;
+    margin-top: 20px;
+}
+
+.right-bottom-card {
+    float: left;
+    width: 50%;
+    margin-left: -20px;
+}
+
+.card-text-nom {
+    font-size: 15px;
+}
+
+.cursor-hover {
+    cursor: pointer;
+}
+.nav-link:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}

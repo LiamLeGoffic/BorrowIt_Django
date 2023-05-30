@@ -1,0 +1,54 @@
+{% extends 'articles/base.html' %}
+
+{% block extra_css %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'articles/home_styles.css' %}" />
+    
+{% endblock %}
+
+{% block content %}
+
+
+<div class="card" style="margin-right:100px; margin-left:100px; margin-top:40px; margin-bottom:40px; border-radius: 15px;">
+    <div class="row g-0">
+        <div class="col-md-6" style="display:flex; justify-content:center; align-items:center;">
+            <img src={{ objet.url_photo }} class="img img-fluid mt-4 mb-4" style="width:50%; border-radius:10%" alt="Image de l'objet">
+        </div>
+        <div class="col-md-6">
+            <div class="card-body mt-4">
+                <p><h3>{{ objet.nom }}</h5></p>
+                {% if description != None %}
+                <p>{{ objet.description }}</p>
+                {% endif %}
+                <p>Prix journalier : {{ objet.prix_jour }} €/jour</p>
+                <p>Caution : {{ objet.caution }} €</p>
+                <p>Propriétaire : {{ objet.proprietaire.prenom }} {{ objet.proprietaire.nom }}</p>
+                {% if id == -1 %}
+                <p><a href="{% url 'connexion' %}">Connectez-vous pour louer cet objet</a></p>
+                {% else %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row mt-5">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <span class="form-label">Check In</span>
+                                <input class="form-control" min="2023-05-25" type="date" name="date_debut" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <span class="form-label">Check out</span>
+                                <input class="form-control" min="2023-05-25" type="date" name="date_fin" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-danger" style="border-radius: 30px;">Louer</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

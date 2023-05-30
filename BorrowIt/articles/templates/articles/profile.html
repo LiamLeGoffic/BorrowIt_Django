@@ -1,0 +1,76 @@
+{% extends 'articles/base.html' %}
+
+{% block extra_css %}
+
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'articles/profile_styles.css' %}" />
+  {% if my_profile %}
+    <link rel="stylesheet" href="{% static 'articles/profile_navbar.css' %}" />
+  {% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="margin-right:100px; margin-left:100px; margin-top:40px; margin-bottom:40px; border-radius: 15px;">
+  <div class="row g-0">
+    <div class="col-md-6" style="display:flex; justify-content:center; align-items:center;">
+      <img src={{ target.url_photo }} class="img img-fluid mt-4 mb-4" style="width:50%; border-radius:10%" alt="Image profil">
+    </div>
+    <div class="col-md-6">
+      <div class="card-body mt-4">
+        <p><h3>{{ target.prenom }} {{ target.nom }}</h5></p>
+        <br>
+        {% if connected %}
+        <p>MAIL : {{ target.mail }}</p>
+        <p>TEL. : {{ target.numero_tel }}</p>
+        {% else %}
+        <p><a href="{% url 'connexion' %}">Connectez-vous pour accéder à plus d'informations sur cet utilisateur</a></p> 
+        {% endif %}
+        {% if my_profile %}
+        {% if fin_abonnement_actuel != Note %}
+        <p>Abonnement jusqu'au : {{ fin_abonnement_actuel }}</p>
+        {% endif %}
+        <p><a href="{% url 'modifier-profil' id %}">MODIFIER</a></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if connected %}
+<h2 style="margin-left:100px">Objets possédés :</h2>
+<div class="ml-4 mr-4 mt-4 mb-5">
+  <div class="container" style="max-width:max-content;">
+    <div class="row">
+      {% for objet in objects %}
+      <div class="conteneur col-sm-3">
+        <div class="card" style="border-radius: 15px;">
+          <a href={% if id == -1 %} "{% url 'objet-unconnected' objet.id %}" 
+                  {% else %} "{% url 'objet-connected' id objet.id %}"
+                  {% endif %}>
+            <img class="card-img-top" src="{{ objet.url_photo }}">
+          </a>
+          <div class="card-block" style="max-height: 118px;">
+            <p class="card-title cursor-hover">{{ objet.nom }}</p>
+            <div class="ml-4">
+              <p class="card-text">
+                <br>
+                <small class="card-text-nom">prix/jour : {{ objet.prix_jour }} €</small>
+                <br>
+                <small class="card-text-nom">caution : {{ objet.prix_jour }} €</small>
+              </p>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+      {% empty %}
+      <p>Aucun objet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

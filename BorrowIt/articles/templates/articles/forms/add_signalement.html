@@ -1,0 +1,40 @@
+
+{% extends 'articles/base.html' %}
+
+{% block content %}
+
+<div class="conteneur container-fluid justify-content-center">
+    <div class="row align-text-center" style="height: 900px;">
+        <div class="mx-auto col-10 col-md-8 col-lg-6 mt-3">
+            <form action="" method="post" style="padding-left: 30px; padding-right: 30px; box-shadow: 1px 1px 3px 3px rgba(255, 205, 205, 0.925);">
+                <div class="md-form mb-4" style="text-align: center; padding-top: 15px;">
+                    <p style="font-weight: bold; font-size: x-large;">Signaler une personne</p>
+                </div>
+                {% csrf_token %}
+                <div class=" md-form mb-4">
+                    <p style="font-weight: bold;">Motif :</p>
+                    <i class="fas prefix grey-text"></i>
+                    <select class="form-select form-select-lg mb-3 form-control validate" aria-label=".form-select-lg example" name="type_signalement" required>
+                        <option value='D'>Défectueux</option>
+                        <option value='V'>Vulgarité</option>
+                        <option value='R'>Retard</option>
+                        <option value='P'>Paiement</option>
+                    </select>
+                </div>
+                <div class="md-form mb-">
+                    <p style="font-weight: bold;">Commentaire :</p>
+                    <div class="form-floating">
+                        <textarea maxlength="200" class="form-control validate" id="floatingTextarea2" name="description" 
+                        style="height: 100px" placeholder="200 caractères max"></textarea>
+                    </div>
+                </div>
+                <div class="d-flex flex-column" style="text-align: center;">
+                    <input type="submit" class="creation btn btn-round custom-close mb-5" value="Valider"
+                        style="width:200px;color: white; background-color: rgb(211, 0, 0); border-radius: 30px;">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

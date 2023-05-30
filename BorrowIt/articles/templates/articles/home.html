@@ -1,0 +1,84 @@
+{% extends 'articles/base.html' %}
+
+{% block extra_css %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'articles/home_styles.css' %}" />
+    
+{% endblock %}
+
+{% block content %}
+
+<!-- onglet type objet -->
+<div class="mt-3">
+    <ul class="nav nav-pills justify-content-center">
+        <!-- Lien pour ALL -->
+        <li class="nav-item">
+            <a class="nav-link" href={% if id == -1 %} "{% url 'home' %}" 
+                                     {% else %} "{% url 'home-connected' id %}"
+                                     {% endif %}>
+                <img src="https://i.goopics.net/t7q6k8.png" height="30"
+                    alt="BorrowIt Logo" loading="lazy" /></a>
+            <p class="text-center">Voir tout</p>
+        </li>
+        {% for tag_name, value in dict_tag.items %}
+        <li class="nav-item">
+            <a class="nav-link" href={% if id == -1 %} "{% url 'search-by-tag-unconnected' tag_name %}" 
+                                     {% else %} "{% url 'search-by-tag-connected' id tag_name %}" 
+                                     {% endif %}>
+                <img src={{ value.1 }} height="30" alt="BorrowIt Logo" loading="lazy" />
+            </a>
+            <p class="text-center">{{ tag_name }}</p>
+        </li>
+        {% endfor %}
+        
+    </ul>
+</div>
+
+
+
+<!-- DEBUT CARDS -->
+<div class="ml-4 mr-4 mt-4 mb-5">
+    <div class="container" style="max-width:max-content;">
+        <div class="row">
+            {% for objet in objects %}
+            <div class="conteneur col-sm-2">
+                <div class="card" style="border-radius: 15px;">
+                    <a href={% if id == -1 %} "{% url 'objet-unconnected' objet.id %}" 
+                            {% else %} "{% url 'objet-connected' id objet.id %}"
+                            {% endif %}>
+                        <img class="card-img-top" src="{{ objet.url_photo }}">
+                    </a>
+                    <div class="card-block" style="max-height: 118px;">
+                        <p class="card-title cursor-hover">{{ objet.nom }}</p>
+                        <div class="left-bottom-card">
+                            <a href={% if id == -1 %} "{% url 'profil-target-unconnected' objet.proprietaire.id %}"
+                                    {% else %} "{% url 'profil-target-connected' id objet.proprietaire.id %}"  
+                                    {% endif %}>
+                                <img class="card-img-bot" src="{{objet.proprietaire.url_photo}}">
+                            </a>
+                        </div>
+                        <div class="right-bottom-card mb-4">
+                            <p class="card-text">
+                                <br>
+                                <small class="text-muted">
+                                    Ajouté par
+                                </small>
+                                <br>
+                                <small class="card-text-nom">
+                                    {{ objet.proprietaire.nom }} {{ objet.proprietaire.prenom }}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            {% empty %}
+                <p>Aucun résultat trouvé.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
