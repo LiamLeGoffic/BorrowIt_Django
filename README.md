@@ -6,5 +6,4 @@ The aim of this project is to recode the frontend and the backend using Django, 
 
 # Requirements
 
-This application use Django with the verison 4.2. 
-To install Django : https://docs.djangoproject.com/fr/4.0/topics/install/
+This application use Django with the verison 4.2 (to install Django : https://docs.djangoproject.com/fr/4.0/topics/install/)
