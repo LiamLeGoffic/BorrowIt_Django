@@ -1,5 +1,7 @@
 # BorrowIt_Django
 
-BorrowIt est un projet de site de location d'objet de particulier à particulier écrit à la base à l'aide de deux frameworks, Spring pour le backend (https://github.com/LiamLeGoffic/BorrowIt) et Angular pour le frontend (https://github.com/Brunaze/BorrowIt).
+BorrowIt is website project to rent objects from person to person. It is coded with two frameworks, Spring for the backend (https://github.com/LiamLeGoffic/BorrowIt) and Angular for the frontend (https://github.com/Brunaze/BorrowIt).
 
-Le but de ce projet est de réécrire le frontend et le backend en utilisant Django, qui permet de faire du développement web en python.
+The aim of this project is to recode the frontend and the backend using Django, a framework used for developing websites in python.
+
+
